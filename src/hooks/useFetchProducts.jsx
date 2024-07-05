@@ -1,32 +1,43 @@
 import { useState, useEffect } from "react";
 
 export const useFetchProducts = (selectedCategoryName) => {
-  const [categorisedProducts, setcategorisedProducts] = useState([]);
+  const [categorisedProducts, setCategorisedProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
 
   useEffect(() => {
     setIsLoading(true);
-    // console.log(selectedCategoryName);
     const fetchProduct = async () => {
       try {
-        const url = `https://fakestoreapi.com/products/category/${selectedCategoryName}`;
-        const response = await fetch(url);
+        const token = localStorage.getItem("token");
+        if (!token) {
+          setError("No token");
+          setIsLoading(false);
+          return;
+        }
+        const url = `http://localhost:3000/api/products/category/${encodeURIComponent(
+          selectedCategoryName
+        )}`;
+        const response = await fetch(url, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
         if (response.ok) {
           const product = await response.json();
-          setcategorisedProducts(product);
+          setCategorisedProducts(product);
           setIsLoading(false);
-          // console.log(product);
-          // setSelectedProducts(product);
         } else {
-          throw new Error("Can't fetch products");
+          setIsLoading(false);
+          throw new Error("Can't fetch the products");
         }
       } catch (error) {
-        // console.log(error);
-        setError("Cant fetch products");
+        setError("Can't fetch the products");
         setIsLoading(false);
       }
     };
+
     fetchProduct();
   }, [selectedCategoryName]);
 

@@ -73,7 +73,7 @@ export const Home = () => {
                 <p>{product.category}</p>
                 <p className="price">Price: {product.price}</p>
                 <p>
-                  {product.rating.rate}({product.rating.count} reviews)
+                  {product.rating?.rate}({product.rating?.count} reviews)
                 </p>
                 <button onClick={() => navigate(`/products/${product.id}`)}>
                   See Details

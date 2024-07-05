@@ -5,6 +5,8 @@ import { SignUp } from "./components/SignUp";
 import { NotFoundPage } from "./components/NotFoundPage";
 import { ProductDetails } from "./components/ProductDetails";
 import AddProductPage from "./components/AddProductPage";
+import Login from "./components/Login";
+
 // import { CategoryList } from "./CategoryList";
 
 function App() {
@@ -14,6 +16,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="*" element={<NotFoundPage />} />
           <Route path="/products/:id" element={<ProductDetails />} />
