@@ -41,13 +41,39 @@ export const Navbar = () => {
                 value={searchQuery}
                 onChange={handleSearch}
               />
-              <button onClick={handleSearch}>Search</button>
+              <button
+                onClick={handleSearch}
+                style={{
+                  padding: "10px 20px",
+                  fontSize: "16px",
+                  backgroundColor: "#007bff",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                }}
+              >
+                Search
+              </button>
             </div>
           </>
         ) : (
           <>
             <Link to="/signup">Sign Up</Link>
-            <Link to="/login">Login</Link>
+            <Link
+              to="/login"
+              style={{
+                padding: "10px 20px",
+                fontSize: "16px",
+                backgroundColor: "#007bff",
+                color: "#fff",
+                border: "none",
+                borderRadius: "4px",
+                cursor: "pointer",
+              }}
+            >
+              Login
+            </Link>
           </>
         )}
         <div className="menu-toggle" onClick={toggleMenu}>
