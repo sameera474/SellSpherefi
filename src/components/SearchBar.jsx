@@ -1,32 +1,28 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-function Search() {
-  const [searchTerm, setSearchTerm] = useState([]);
+const SearchBar = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const getAPI = async () => {
-    const response = await fetch(
-      `http://localhost:3000/api/products/category/${encodeURIComponent(
-        searchTerm
-      )}`
-    );
-    const data = await response.json();
-    setText(data.Search);
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
   };
 
-  useEffect(() => {
-    getAPI();
-  }, []);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSearch(searchTerm);
+  };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <input
-        placeholder="searching"
+        type="text"
+        placeholder="Search products..."
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={handleInputChange}
       />
-    </div>
+      <button type="submit">Search</button>
+    </form>
   );
-}
+};
 
 export default SearchBar;

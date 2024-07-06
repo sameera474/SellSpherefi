@@ -6,6 +6,7 @@ import { NotFoundPage } from "./components/NotFoundPage";
 import { ProductDetails } from "./components/ProductDetails";
 import AddProductPage from "./components/AddProductPage";
 import Login from "./components/Login";
+// import { SearchBar } from "./components/SearchBar";
 
 // import { CategoryList } from "./CategoryList";
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          {/* <Route path="/searchBar" element={<SearchBar />} /> */}
           <Route path="*" element={<NotFoundPage />} />
           <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/addProduct" element={<AddProductPage />} />

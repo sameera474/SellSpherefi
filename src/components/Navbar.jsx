@@ -31,7 +31,7 @@ export const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <h1>SellSphere</h1>
+      <h1>SellSphere.fi</h1>
       <div className={`links ${menuOpen ? "menu-open" : ""}`}>
         <Link to="/">Home</Link>
         {isAuthenticated ? (
