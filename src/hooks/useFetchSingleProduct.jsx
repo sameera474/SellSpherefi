@@ -10,7 +10,7 @@ export const useFetchSingleProduct = (productId) => {
     // console.log(selectedCategoryName);
     const fetchProduct = async () => {
       try {
-        const url = `https://fakestoreapi.com/products/${productId}`;
+        const url = `http://localhost:3000/api/products/category/${productId}`;
         const response = await fetch(url);
         if (response.ok) {
           const product = await response.json();
