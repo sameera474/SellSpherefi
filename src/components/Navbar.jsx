@@ -37,7 +37,7 @@ export const Navbar = () => {
         {isAuthenticated ? (
           <>
             <div className="user-info">
-              <p>Welcome, {username}</p> {/* Display username */}
+              <p>Welcome, {username}</p>
               <button onClick={handleLogout}>Logout</button>
             </div>
             <div className="search-bar">
@@ -97,11 +97,7 @@ export const Navbar = () => {
             </Link>
           </>
         )}
-        <div className="menu-toggle" onClick={toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        <div className="menu-toggle" onClick={toggleMenu}></div>
       </div>
     </nav>
   );
