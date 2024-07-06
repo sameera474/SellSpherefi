@@ -16,7 +16,6 @@ export const Navbar = () => {
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
-
     console.log("Search query:", e.target.value);
   };
 
@@ -28,7 +27,7 @@ export const Navbar = () => {
     <nav className="navbar">
       <h1>SellSphere</h1>
       <div className={`links ${menuOpen ? "menu-open" : ""}`}>
-        <Link to={"/"}>Home</Link>
+        <Link to="/">Home</Link>
         {isAuthenticated ? (
           <>
             <div className="user-info">
@@ -47,28 +46,8 @@ export const Navbar = () => {
           </>
         ) : (
           <>
-            <Link
-              to={"/signup"}
-              style={
-                {
-                  // color: "white",
-                  // backgroundColor: "#eb3434",
-                }
-              }
-            >
-              Sign Up
-            </Link>
-            <Link
-              to={"/login"}
-              style={
-                {
-                  // color: "white",
-                  // backgroundColor: "#eb3434",
-                }
-              }
-            >
-              Login
-            </Link>
+            <Link to="/signup">Sign Up</Link>
+            <Link to="/login">Login</Link>
           </>
         )}
         <div className="menu-toggle" onClick={toggleMenu}>

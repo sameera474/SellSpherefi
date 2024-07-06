@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
@@ -6,6 +7,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -24,7 +26,7 @@ const Login = () => {
 
       if (response.ok) {
         login(data.token);
-        console.log(data.token);
+        navigate("/");
       } else {
         throw new Error(data.message || "Login failed");
       }
@@ -36,28 +38,35 @@ const Login = () => {
 
   return (
     <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Username</label>
-          <input
-            type="text"
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
-          />
-        </div>
-        <div>
-          <label>password</label>
-          <input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-          />
-        </div>
-        <button type="submit">Login</button>
-        {error && <p>{error}</p>}
-      </form>
+      <div></div>
+      <div
+        className="form container"
+        style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+      >
+        <h2>Login</h2>
+        <form onSubmit={handleLogin}>
+          <div>
+            <label>Username</label>
+            <input
+              type="text"
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
+            />
+          </div>
+          <div>
+            <label>Password</label>
+            <input
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+            />
+          </div>
+          <button type="submit">Login</button>
+          {error && <p>{error}</p>}
+        </form>
+      </div>
     </div>
   );
 };
+
 export default Login;
